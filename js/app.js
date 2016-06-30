@@ -18,7 +18,7 @@ $(document).ready(function(){
 
   	var guess = guessGenerator(1, 100);
 
-  	//take in a user guess
+  	//take in a user guess and check it or store it
 
   	$("form").submit(function(event) {
 
