@@ -20,6 +20,8 @@ $(document).ready(function(){
   		computerNum = guessGenerator(1,100);
   		alert(computerNum);
   		formSwitch(2);
+  		//i cant get the input box to reset afterwards
+  		$("ul#guessList").empty();
   		
   		
 
@@ -28,7 +30,6 @@ $(document).ready(function(){
   	//generate a secret number between 1 and 100 (has to be function)
 
   	var computerNum = guessGenerator(1, 100);
-  	alert(computerNum);  	
   	//take in a user guess and check it
   
  	
