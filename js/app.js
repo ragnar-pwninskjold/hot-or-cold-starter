@@ -27,7 +27,7 @@ $(document).ready(function(){
 
   			alert("Sorry, thats not a valid input, guess again!");
   			event.preventDefault();
-  			document.getElementByName("form").reset();
+  			$("form")[0].reset();
   		}
 
   		var userGuess = $("#userGuess").val();
@@ -37,7 +37,7 @@ $(document).ready(function(){
   	});
 
 
-
+  	//math abs for checking guesses
   	//give feedback about each guess -- too high, too low, etc (goes into h2#feedback)
 
   	//make list of numbers that have been guessed (put in ul#guessList)
@@ -45,6 +45,8 @@ $(document).ready(function(){
   	//make function to check for valid inputs (e.g. between 1 and 100)
 
   	//*optional* feedback relative to last guess
+
+  	//on correct guess, disable new guesses until new game
 
 });
 
