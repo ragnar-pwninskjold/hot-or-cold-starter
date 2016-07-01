@@ -18,10 +18,10 @@ $(document).ready(function(){
 
   		var userGuess = 0;
   		computerNum = guessGenerator(1,100);
-  		alert(computerNum);
   		formSwitch(2);
   		//i cant get the input box to reset afterwards
   		$("ul#guessList").empty();
+  		console.log(computerNum);
   		
   		
 
