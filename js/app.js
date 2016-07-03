@@ -23,9 +23,9 @@ $(document).ready(function(){
   		newGame();
   		//set the counter to 0 for guess count
   		gameCounter++;
-  		$("li.guesses").remove();
   		counter = 0;
   		$("#count").text(counter);
+  		$("#feedback").text("Make a guess!");
   	});
 
   	//generate a secret number between 1 and 100 (has to be function)
@@ -108,29 +108,25 @@ function checker(x) {
 //*optional* feedback relative to last guess
 
 function tempChecker (uGuess, cNum) {
-	if (uGuess == cNum) {
-		return "You got it!";
-		}
-	else if ((Math.abs(uGuess - cNum) <= 5)) {
-		count++;
-		return "You're red hot!";
-		}
-	else if ((Math.abs(uGuess - cNum) <= 15)) {
-		count++;
-		return "You're warm, I guess";
-		}
-	else if ((Math.abs(uGuess - cNum) <= 25)) {
-		count++;
-		return "You're room temperature, at best";
-		}
-	else if ((Math.abs(uGuess - cNum) <= 40)) {
-		count++;
-		return "Cold";
-		}
-	else {
-		count++;
-		return "You're an ice box!";
-		}
+		if (uGuess == cNum) {
+			return "You got it!";
+			}
+		else if ((Math.abs(uGuess - cNum) <= 5)) {
+			return "You're red hot!";
+			}
+		else if ((Math.abs(uGuess - cNum) <= 15)) {
+			return "You're warm, I guess";
+			}
+		else if ((Math.abs(uGuess - cNum) <= 25)) {
+			return "You're room temperature, at best";
+			}
+		else if ((Math.abs(uGuess - cNum) <= 40)) {
+			return "Cold";
+			}
+		else {
+			return "You're an ice box!";
+			}
+	
 	}
 
 /*
