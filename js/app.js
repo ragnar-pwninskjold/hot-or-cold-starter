@@ -48,8 +48,7 @@ $(document).ready(function(){
 
   		 //give feedback about each guess -- too high, too low, etc (goes into h2#feedback)
 
-  		var temp = tempChecker(userGuess, computerNum);
-  		$("#feedback").text(temp);
+  		
 
   		//make list of numbers that have been guessed (put in ul#guessList)
 
@@ -58,8 +57,25 @@ $(document).ready(function(){
   		//make counter increment on the screen
   		counter++;
   		$("#count").text(counter);
+  		//put guesses into an array
+  		var guessList = [];
+  		$("li.guesses").each(function(i,elem) {
+  			guessList.push($(elem).text());
+  		});
+  		//go to the list index-1 and store that as "old guess" to compare for relative checker
+  		
+
+  		if (counter <= 1) {
+  			var temp = tempChecker(userGuess, computerNum);
+  			$("#feedback").text(temp);
+  			}
+  		else {
+  			//var temp = relativeChecker(userGuess, guessList[-1], computerNum);
+  			//$("#feedback").text(temp);
+  			var temp = tempChecker(userGuess, computerNum);
+  			$("#feedback").text(temp);
+  			}
 		}
-		//go to the list index-1 and store that as "old guess" to compare for relative checker
 		
 
 		$("#userGuess").val("Another Guess?");
@@ -130,7 +146,7 @@ function tempChecker (uGuess, cNum) {
 	}
 
 /*
-function relativeChecker (nGuess, cNum, oGuess) {
+function relativeChecker (nGuess, oGuess, cNum) {
 
 	var newDiff = nGuess - cNum;
 	var oldDiff = oGuess - cNum;
@@ -141,13 +157,13 @@ function relativeChecker (nGuess, cNum, oGuess) {
 
 	else if (newDiff < oldDiff) {
 
-		return
+		return "Don't go down that road!";
 
 	}
 
 	else {
 
-		return 
+		return "You're approaching the destination!";
 	}
 
 }
