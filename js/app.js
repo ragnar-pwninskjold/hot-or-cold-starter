@@ -16,14 +16,8 @@ $(document).ready(function(){
 
   	$(".new").click(function() {
 
-  		computerNum = guessGenerator(1,100);
-  		formSwitch(2);
-  		//i cant get the input box to reset afterwards
-  		$("ul#guessList").empty();
-  		console.log(computerNum);
-  		$("#userGuess").val("Make a guess!");
-  		
-
+  		newGame();
+  		//set the counter to 0 for guess count
   	});
 
   	//generate a secret number between 1 and 100 (has to be function)
@@ -49,6 +43,12 @@ $(document).ready(function(){
 
   		var temp = tempChecker(userGuess, computerNum);
   		$("#feedback").text(temp);
+  		
+  		
+  		
+		//go to the list index-1 and store that as "old guess" to compare for relative checker
+  		
+
 
   		//make list of numbers that have been guessed (put in ul#guessList)
 
@@ -58,6 +58,7 @@ $(document).ready(function(){
   		counter++;
   		$("#count").text(counter);
 		}
+
 		$("#userGuess").val("Another Guess?");
 		//on correct guess, disable new guesses until new game
   		if (userGuess == computerNum) {
@@ -66,11 +67,12 @@ $(document).ready(function(){
   			userGuess = 0;
 
   		}
+  		});
   	$("form").on("click", "#userGuess", function() {
 
   		$(this).val(" ");
 
-  	});
+  	
   	});
  
 
@@ -108,24 +110,54 @@ function checker(x) {
 function tempChecker (uGuess, cNum) {
 	if (uGuess == cNum) {
 		return "You got it!";
-	}
+		}
 	else if ((Math.abs(uGuess - cNum) <= 5)) {
+		count++;
 		return "You're red hot!";
-	}
+		}
 	else if ((Math.abs(uGuess - cNum) <= 15)) {
+		count++;
 		return "You're warm, I guess";
-	}
+		}
 	else if ((Math.abs(uGuess - cNum) <= 25)) {
+		count++;
 		return "You're room temperature, at best";
-	}
+		}
 	else if ((Math.abs(uGuess - cNum) <= 40)) {
+		count++;
 		return "Cold";
+		}
+	else {
+		count++;
+		return "You're an ice box!";
+		}
 	}
+
+/*
+function relativeChecker (nGuess, cNum, oGuess) {
+
+	var newDiff = nGuess - cNum;
+	var oldDiff = oGuess - cNum;
+	if (nGuess == cNum) {
+
+		return "You got it!";
+	}
+
+	else if (newDiff < oldDiff) {
+
+		return
+
+	}
+
 	else {
 
-		return "You're an ice box!";
+		return 
 	}
+
 }
+*/
+
+
 
 function formSwitch (x) {
 
@@ -142,3 +174,12 @@ else {
 }
 
 }
+
+function newGame() {
+		computerNum = guessGenerator(1,100);
+  		formSwitch(2);
+  		$("ul#guessList").empty();
+  		console.log(computerNum);
+  		$("#userGuess").val("Make a guess!");	
+
+ }
