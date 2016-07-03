@@ -67,9 +67,11 @@ $(document).ready(function(){
   			
   		
 		}
-		
+		//reset the input after each submission
+		$("#form").each(function() {
+			this.reset();
+		});
 
-		$("#userGuess").val("Another Guess?");
 		//on correct guess, disable new guesses until new game
   		if (userGuess == computerNum) {
   			$("#feedback").text("You got it!");
