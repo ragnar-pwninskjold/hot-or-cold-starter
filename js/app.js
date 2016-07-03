@@ -14,18 +14,24 @@ $(document).ready(function(){
 
   	//create a new game button which starts a new game
 
+  	var gameCounter = 0;
+  	var counter = 0;
+
+
   	$(".new").click(function() {
 
   		newGame();
   		//set the counter to 0 for guess count
-
+  		gameCounter++;
+  		$("li.guesses").remove();
+  		counter = 0;
+  		$("#count").text(counter);
   	});
 
   	//generate a secret number between 1 and 100 (has to be function)
 
   	computerNum = guessGenerator(1, 100);
   	//take in a user guess and check it
-  	var counter = 0;
   
  	
   	$("form").submit(function(event) {
@@ -44,9 +50,6 @@ $(document).ready(function(){
 
   		var temp = tempChecker(userGuess, computerNum);
   		$("#feedback").text(temp);
-
-  		
-
 
   		//make list of numbers that have been guessed (put in ul#guessList)
 
@@ -72,11 +75,7 @@ $(document).ready(function(){
   	$("form").on("click", "#userGuess", function() {
 
   		$(this).val(" ");
-
-  	
   	});
- 
-
 });
 
 //make a function that generates guesses for the computer
@@ -181,6 +180,5 @@ function newGame() {
   		formSwitch(2);
   		$("ul#guessList").empty();
   		console.log(computerNum);
-  		$("#userGuess").val("Make a guess!");	
-
+  		$("#userGuess").val("Make a guess!");
  }
