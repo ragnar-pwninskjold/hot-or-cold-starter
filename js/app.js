@@ -44,11 +44,7 @@ $(document).ready(function(){
   		}
 
   		userGuess = $("#userGuess").val();
-  		event.preventDefault();
-
-  		 //give feedback about each guess -- too high, too low, etc (goes into h2#feedback)
-
-  		
+  		event.preventDefault();  		
 
   		//make list of numbers that have been guessed (put in ul#guessList)
 
@@ -64,24 +60,19 @@ $(document).ready(function(){
   		});
   		//go to the list index-1 and store that as "old guess" to compare for relative checker
   		
+  		 //give feedback about each guess -- too high, too low, etc (goes into h2#feedback)
 
-  		if (counter <= 1) {
   			var temp = tempChecker(userGuess, computerNum);
   			$("#feedback").text(temp);
-  			}
-  		else {
-  			//var temp = relativeChecker(userGuess, guessList[-1], computerNum);
-  			//$("#feedback").text(temp);
-  			var temp = tempChecker(userGuess, computerNum);
-  			$("#feedback").text(temp);
-  			}
+  			
+  		
 		}
 		
 
 		$("#userGuess").val("Another Guess?");
 		//on correct guess, disable new guesses until new game
   		if (userGuess == computerNum) {
-
+  			$("#feedback").text("You got it!");
   			formSwitch(1);
   			userGuess = 0;
 
