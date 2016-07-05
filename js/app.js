@@ -25,7 +25,7 @@ $(document).ready(function(){
   		gameCounter++;
   		counter = 0;
   		$("#count").text(counter);
-  		$("#feedback").text("Make a guess!");
+  		$("#feedback").text("Make your Guess!");
   	});
 
   	//generate a secret number between 1 and 100 (has to be function)
@@ -44,29 +44,28 @@ $(document).ready(function(){
   		}
 
   		userGuess = $("#userGuess").val();
-  		event.preventDefault();  		
+  		event.preventDefault();  
+
 
   		//make list of numbers that have been guessed (put in ul#guessList)
 
-  		if (userGuess != computerNum) {
   		$("ul#guessList").append("<li class='guesses'>"+userGuess+"</li>");
   		//make counter increment on the screen
   		counter++;
   		$("#count").text(counter);
-  		//put guesses into an array
-  		var guessList = [];
-  		$("li.guesses").each(function(i,elem) {
-  			guessList.push($(elem).text());
-  		});
+ 		
+
+
+
   		//go to the list index-1 and store that as "old guess" to compare for relative checker
   		
-  		 //give feedback about each guess -- too high, too low, etc (goes into h2#feedback)
+  		//give feedback about each guess -- too high, too low, etc (goes into h2#feedback)
 
-  			var temp = tempChecker(userGuess, computerNum);
-  			$("#feedback").text(temp);
+		var temp = tempChecker(userGuess, computerNum);
+		$("#feedback").text(temp);
   			
   		
-		}
+		
 		//reset the input after each submission
 		$("#form").each(function() {
 			this.reset();
@@ -148,7 +147,7 @@ function relativeChecker (nGuess, oGuess, cNum) {
 		return "You got it!";
 	}
 
-	else if (newDiff < oldDiff) {
+	else if (newDiff > oldDiff) {
 
 		return "Don't go down that road!";
 
@@ -162,22 +161,14 @@ function relativeChecker (nGuess, oGuess, cNum) {
 }
 */
 
-
-
 function formSwitch (x) {
 
 if (x==1) {
-
 	$("#form input").prop("disabled", true);
-
 }
-
 else {
-
 	$("#form input").prop("disabled", false);
-
 }
-
 }
 
 function newGame() {
